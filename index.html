@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Alrededor de EEUU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Alrededor de los EEUU" />
+    <meta name="keywords" content="tripleten, Sprint 7" />
+    <meta name="author" content="Magaly Romero" />
+  </head>
+  <body>
+    <div class="popup" id="popup">
+      <div class="popup__container">
+        <button class="popup__close">
+          <img
+            src="./images/Close_off.svg"
+            alt="close button"
+            class="popup__close"
+          />
+        </button>
+
+        <div class="popup__card">
+          <h3 class="popup__title">Editar perfil</h3>
+          <div class="popup__input">
+            <input
+              type="text"
+              placeholder="Nombre"
+              class="popup__text popup__text_title"
+            />
+            <input
+              type="text"
+              placeholder="Acerca de mí"
+              class="popup__text popup__text_about"
+            />
+            <button class="popup__submit-btn popup__submit-btn_action_add">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="popup__overlay"></div>
+    </div>
+    <div class="page">
+      <header class="header">
+        <div class="header__logo">
+          <img
+            src="./images/logo.svg"
+            alt="Logo Around The US'"
+            class="header__logo"
+          />
+        </div>
+        <hr class="header__line" />
+      </header>
+      <section class="profile">
+        <div class="profile__avatar">
+          <img
+            src="./images/Avatar.png"
+            alt="Profile picture"
+            class="profile__avatar"
+          />
+        </div>
+        <div class="profile__info">
+          <div class="profile__info-title">
+            <h1 class="profile__info-name">Jacques Cousteau</h1>
+            <button class="profile__info-edit" id="open-popup">
+              <img src="./images/Edit_off.svg" alt="Boton para editar" />
+            </button>
+          </div>
+          <h2 class="profile__info-subtitle">Explorador</h2>
+        </div>
+        <div class="profile__add">
+          <img
+            src="./images/Add_off.svg"
+            alt="Boton para añadir nuevo"
+            class="profile__add"
+          />
+        </div>
+      </section>
+      <main class="elements">
+        <section class="elements__container">
+          <figure class="elements__item">
+            <img
+              src="./images/card_01.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Valle de Yosemite</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+
+          <figure class="elements__item">
+            <img
+              src="./images/card_02.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Lago Louise</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/card_03.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Montañas Calvas</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/card_04.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Latemar</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/card_05.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Vanois National...</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+          <figure class="elements__item">
+            <img
+              src="./images/card_06.png"
+              alt="Boton para añadir nuevo"
+              class="elements__image"
+            />
+            <div class="elements__description">
+              <p class="elements__description-title">Lago di Braies</p>
+              <div class="elements__description-like">
+                <img
+                  src="./images/like_off.svg"
+                  alt="Boton para añadir nuevo"
+                  class="elements__description-like"
+                />
+              </div>
+            </div>
+          </figure>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2021 Around The U.S.</p>
+      </footer>
+    </div>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
