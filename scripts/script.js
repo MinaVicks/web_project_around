@@ -12,6 +12,7 @@ function createPopup(id) {
   }
   closeOverlay.addEventListener("click", closePopup);
   closeEditPopup.addEventListener("click", closePopup);
+  closeEditPopup.addEventListener("click", closePopup);
   return openPopup;
 }
 
@@ -19,7 +20,14 @@ let popup = createPopup("#popup");
 document.querySelector("#open-popup").addEventListener("click", popup);
 
 let container = document.querySelector(".popup__input");
+
 let addButton = container.querySelector(".popup__submit-btn_action_add");
+
+/*
+function openPopup() {
+  let popup = document.querySelector(".popup");
+  let 
+}*/
 
 function editProfile() {
   let changeName = document.querySelector(".profile__info-name");
@@ -30,6 +38,13 @@ function editProfile() {
 
   changeName.textContent = newName.value;
   changeAbout.textContent = newAbout.value;
+
+  addButton.classList.add("active");
+
+  function btnInactive() {
+    addButton.classList.remove("active");
+  }
+  return btnInactive;
 }
 
 addButton.addEventListener("click", editProfile);

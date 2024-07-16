@@ -72,6 +72,13 @@
   border-style: none;
   background-color: #00000083;
 }
+
+.popup__submit-btn.active {
+  color: #fff;
+  border-style: none;
+  background-color: #000;
+}
+
 .popup__overlay {
   position: fixed;
   top: 0;
