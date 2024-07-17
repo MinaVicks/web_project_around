@@ -11,7 +11,7 @@
     <meta name="author" content="Magaly Romero" />
   </head>
   <body>
-    <div class="popup" id="popup">
+    <div class="popup_profile">
       <div class="popup__container">
         <button class="popup__close">
           <img
@@ -23,21 +23,23 @@
 
         <div class="popup__card">
           <h3 class="popup__title">Editar perfil</h3>
-          <div class="popup__input">
+          <form class="popup__input">
             <input
               type="text"
               placeholder="Nombre"
               class="popup__text popup__text_title"
             />
+
             <input
               type="text"
               placeholder="Acerca de mí"
               class="popup__text popup__text_about"
             />
+
             <button class="popup__submit-btn popup__submit-btn_action_add">
               Guardar
             </button>
-          </div>
+          </form>
         </div>
       </div>
       <div class="popup__overlay"></div>

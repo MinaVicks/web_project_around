@@ -1,50 +1,27 @@
-function createPopup(id) {
-  let popupNode = document.querySelector(id);
-  let closeEditPopup = popupNode.querySelector(".popup__close");
-  let closeOverlay = popupNode.querySelector(".popup__overlay");
+const popupProfile = document.querySelector(".popup_profile");
+const profileEditButton = document.querySelector(".profile__info-edit");
+const profileNameNode = document.querySelector(".profile__info-name");
+const profileAboutNode = document.querySelector(".profile__info-subtitle");
+const formProfile = document.querySelector(".popup__input");
+const inputNameNode = formProfile.querySelector(".popup__text_title");
+const inputAboutNode = formProfile.querySelector(".popup__text_about");
+const closeProfilePopupButton = popupProfile.querySelector(".popup__close");
 
-  function openPopup() {
-    popupNode.classList.add("active");
+profileEditButton.addEventListener("click", function () {
+  popupProfile.classList.add("active");
+  inputNameNode.value = profileNameNode.textContent;
+  inputAboutNode.value = profileAboutNode.textContent;
+});
+
+formProfile.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (inputNameNode.value !== "" && inputAboutNode.value !== "") {
+    profileNameNode.textContent = inputNameNode.value;
+    profileAboutNode.textContent = inputAboutNode.value;
+    popupProfile.classList.remove("active");
   }
+});
 
-  function closePopup() {
-    popupNode.classList.remove("active");
-  }
-  closeOverlay.addEventListener("click", closePopup);
-  closeEditPopup.addEventListener("click", closePopup);
-  closeEditPopup.addEventListener("click", closePopup);
-  return openPopup;
-}
-
-let popup = createPopup("#popup");
-document.querySelector("#open-popup").addEventListener("click", popup);
-
-let container = document.querySelector(".popup__input");
-
-let addButton = container.querySelector(".popup__submit-btn_action_add");
-
-/*
-function openPopup() {
-  let popup = document.querySelector(".popup");
-  let 
-}*/
-
-function editProfile() {
-  let changeName = document.querySelector(".profile__info-name");
-  let changeAbout = document.querySelector(".profile__info-subtitle");
-
-  let newName = document.querySelector(".popup__text_title");
-  let newAbout = document.querySelector(".popup__text_about");
-
-  changeName.textContent = newName.value;
-  changeAbout.textContent = newAbout.value;
-
-  addButton.classList.add("active");
-
-  function btnInactive() {
-    addButton.classList.remove("active");
-  }
-  return btnInactive;
-}
-
-addButton.addEventListener("click", editProfile);
+closeProfilePopupButton.addEventListener("click", function () {
+  popupProfile.classList.remove("active");
+});
