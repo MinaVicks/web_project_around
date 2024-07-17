@@ -1,4 +1,4 @@
-const popupProfile = document.querySelector(".popup__profile");
+const popupProfile = document.querySelector(".popup");
 const profileEditButton = document.querySelector(".profile__info-edit");
 const profileNameNode = document.querySelector(".profile__info-name");
 const profileAboutNode = document.querySelector(".profile__info-subtitle");

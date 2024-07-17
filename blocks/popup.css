@@ -1,4 +1,4 @@
-.popup__profile {
+.popup {
   position: fixed;
   top: 0px;
   align-content: center;
@@ -8,7 +8,7 @@
   opacity: 0;
   scale: 0;
 }
-.popup__profile.active {
+.popup.active {
   opacity: 1;
   pointer-events: all;
   scale: 1;
