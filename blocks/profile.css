@@ -43,7 +43,16 @@
 }
 
 .profile__add {
+  background: none;
+  border-style: none;
+}
+.profile__add_img {
   width: 150px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #c4c4c4;
+  background-color: #000;
+  padding: 5% 0px;
 }
 
 .profile__add:hover {
@@ -57,6 +66,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+  .profile__add_img {
+    width: 90vw;
+    height: 50px;
+    padding: 2% 0px;
+    margin: 10px;
   }
 
   .profile__info-subtitle {
