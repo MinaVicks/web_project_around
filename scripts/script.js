@@ -9,13 +9,10 @@ const inputAboutNode = formProfile.querySelector(".popup__text_about");
 const closeProfilePopupButton = popupProfile.querySelector(".popup__close");
 const popupSaveButton = formProfile.querySelector(".popup__submit-btn");
 
-
-
 profileEditButton.addEventListener("click", function () {
   popupProfile.classList.add("active");
   inputNameNode.value = profileNameNode.textContent;
   inputAboutNode.value = profileAboutNode.textContent;
-  popupSaveButton.classList.remove("active");
 });
 
 formProfile.addEventListener("submit", function (event) {
@@ -23,53 +20,44 @@ formProfile.addEventListener("submit", function (event) {
   if (inputNameNode.value !== "" && inputAboutNode.value !== "") {
     profileNameNode.textContent = inputNameNode.value;
     profileAboutNode.textContent = inputAboutNode.value;
-    popupSaveButton.classList.add("active");
     popupProfile.classList.remove("active");
   }
 });
 
 closeProfilePopupButton.addEventListener("click", function () {
-  console.log('Hello, JavaScript.');
   popupProfile.classList.remove("active");
-  popupSaveButton.classList.remove("active");
 });
-
-
-
-
 
 const initialCards = [
   {
     name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
   },
   {
     name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
   },
   {
     name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
   },
   {
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
   },
   {
     name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
   },
   {
     name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
   {
     name: "Prueba",
-    link: "https://images.pexels.com/photos/27441042/pexels-photo-27441042/free-photo-of-moda-hombre-gente-mujer.jpeg"
-  }
-  
+    link: "https://images.pexels.com/photos/27441042/pexels-photo-27441042/free-photo-of-moda-hombre-gente-mujer.jpeg",
+  },
 ];
-
 
 const cardsContainer = document.querySelector(".elements__container");
 const profileAddButton = document.querySelector(".profile__add");
@@ -77,68 +65,41 @@ const popupAddImage = document.querySelector(".popup__add");
 const closeAddButton = popupAddImage.querySelector(".popup__close");
 const saveAddButton = popupAddImage.querySelector(".popup__button_add");
 
-
-
 profileAddButton.addEventListener("click", function () {
   popupAddImage.classList.add("active");
 });
 
-saveAddButton.addEventListener("click", function (){
+saveAddButton.addEventListener("click", function (event) {
+  event.preventDefault();
 
   const inputImageTitle = document.querySelector(".popup__input_title");
   const inputImageUrl = document.querySelector(".popup__input_url");
 
-  addImage(inputImageTitle.value,inputImageUrl.value);
-
+  if (inputImageTitle.value !== "" && inputImageUrl.value !== "") {
+    addImage(inputImageTitle.value, inputImageUrl.value);
+    inputImageTitle.value = "";
+    inputImageUrl.value = "";
+    popupAddImage.classList.remove("active");
+  }
 });
 
-function addImage(inputImageTitle, inputImageUrl) {
-  /*
-  
-  const newElement = document.createElement("div");
-  newElement.classList.add("elements__item"); 
-
-  const newImageTitle= document.createElement("p");
-  newImageTitle.classList.add("elements__description-title");
-  newImageTitle.textContent=inputImageTitle;
-
-  const newUrlValue= document.createElement("p");
-    newUrlValue.classList.add("elements__image");
-    newUrlValue.textContent=inputImageUrl;
-
-
-
-  const likeButtonElement=document.createElement("button");
-  likeButtonElement.classList.add ("elements__description-liked");*/
-  initialCards.push({name:inputImageTitle.value,link:inputImageUrl.value});
-  console.log(initialCards);
-functionCards()
- 
+function addImage(name, link) {
+  initialCards.push({ name, link });
+  renderCard({ name, link });
 }
 
+function renderCard(data) {
+  const cardElement = document.createElement("div");
+  cardElement.classList.add("elements__item");
 
-
-
-
-
-closeAddButton.addEventListener("click", function () {
-  popupAddImage.classList.remove("active");
-});
-
-
-
-const functionCards = ()=> {
-  initialCards.map((data)=>{
-    cardsContainer.innerHTML += `
-    <div class="elements__item">
-
+  cardElement.innerHTML = `
     <div class="elements__delete">
         <img
-          src="./images/like_on.svg"
+          src="./images/trash.svg"
           alt="Boton delete"
           class="elements__delete-img"
         />
-      </div>
+    </div>
 
     <img src="${data.link}" 
     alt="${data.name}" 
@@ -154,8 +115,17 @@ const functionCards = ()=> {
         />
       </div>
     </div>
-  </div>`
-  })
-}
-functionCards()
+  `;
 
+  cardsContainer.append(cardElement);
+}
+
+closeAddButton.addEventListener("click", function () {
+  popupAddImage.classList.remove("active");
+});
+
+function renderInitialCards() {
+  initialCards.forEach(renderCard);
+}
+
+renderInitialCards();
