@@ -9,6 +9,7 @@
   margin: 0px;
 }
 .elements__item {
+  
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -20,7 +21,9 @@
 
 .elements__image {
   width: 100%;
+  height: 70%;
   object-fit: fill;
+  border-radius:10px 10px 0px  0px;
 }
 
 .elements__description {
@@ -44,6 +47,32 @@
   background-position: center;
   box-sizing: border-box;
   margin: 1px;
+}
+
+.elements__description-liked {
+  background-image: url("./images/like_on.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  margin: 4px;
+  opacity: 100%;
+  transition: 0.3s;
+}
+
+
+.elements__delete{
+  width: 245px;
+  display: flex;
+  position: absolute;
+  justify-content: flex-end;
+  padding: 1%;
+
+}
+
+.elements__delete-img{
+  opacity: 50%;
+
 }
 
 .elements__description-like:hover {

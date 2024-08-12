@@ -10,7 +10,9 @@
     <meta name="keywords" content="tripleten, Sprint 7" />
     <meta name="author" content="Magaly Romero" />
   </head>
+
   <body>
+
     <div class="popup">
       <div class="popup__container">
         <button class="popup__close">
@@ -23,6 +25,7 @@
 
         <div class="popup__card">
           <h3 class="popup__title">Editar perfil</h3>
+
           <form class="popup__input">
             <input
               type="text"
@@ -36,7 +39,7 @@
               class="popup__text popup__text_about"
             />
 
-            <button class="popup__submit-btn popup__submit-btn_action_add">
+            <button class="popup__submit-btn">
               Guardar
             </button>
           </form>
@@ -44,6 +47,40 @@
       </div>
       <div class="popup__overlay"></div>
     </div>
+
+    <div class="popup__add">
+      <div class="popup__container">
+        <button class="popup__close">
+          <img
+            src="./images/Close_off.svg"
+            alt="close button"
+            class="popup__close"
+          />
+        </button>
+
+        <div class="popup__card">
+          <h3 class="popup__title">New Place</h3>
+          <form class="popup__input">
+            <input
+              type="text"
+              placeholder="Title"
+              class="popup__input_title popup__text"
+            />
+
+            <input
+              type="text"
+              placeholder="Image URL"
+              class="popup__input_url popup__text"
+            />
+
+            <button class="popup__button_add"> Añadir </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup__overlay"></div>
+    </div>
+
+    
     <div class="page">
       <header class="header">
         <div class="header__logo">
@@ -81,111 +118,10 @@
         </button>
       </section>
       <main class="elements">
-        <section class="elements__container">
-          <figure class="elements__item">
-            <img
-              src="./images/card_01.png"
-              alt="Imagen 1 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Valle de Yosemite</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
 
-          <figure class="elements__item">
-            <img
-              src="./images/card_02.png"
-              alt="Imagen 2 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Lago Louise</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
-          <figure class="elements__item">
-            <img
-              src="./images/card_03.png"
-              alt="Imagen 3 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Montañas Calvas</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
-          <figure class="elements__item">
-            <img
-              src="./images/card_04.png"
-              alt="Imagen 4 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Latemar</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
-          <figure class="elements__item">
-            <img
-              src="./images/card_05.png"
-              alt="Imagen 5 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Vanois National...</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
-          <figure class="elements__item">
-            <img
-              src="./images/card_06.png"
-              alt="Imagen 6 de la galeria"
-              class="elements__image"
-            />
-            <div class="elements__description">
-              <p class="elements__description-title">Lago di Braies</p>
-              <div class="elements__description-like">
-                <img
-                  src="./images/like_off.svg"
-                  alt="Boton like"
-                  class="elements__description-like"
-                />
-              </div>
-            </div>
-          </figure>
-        </section>
+        <div class="elements__container">
+        </div>
+      
       </main>
       <footer class="footer">
         <p class="footer__copyright">© 2021 Around The U.S.</p>
