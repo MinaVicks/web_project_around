@@ -53,10 +53,6 @@ const initialCards = [
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
-  {
-    name: "Prueba",
-    link: "https://images.pexels.com/photos/27441042/pexels-photo-27441042/free-photo-of-moda-hombre-gente-mujer.jpeg",
-  },
 ];
 
 const cardsContainer = document.querySelector(".elements__container");
