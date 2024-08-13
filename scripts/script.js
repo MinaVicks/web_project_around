@@ -98,13 +98,13 @@ function renderCard(data, isNew = false) {
   cardElement.classList.add('elements__item');
 
   cardElement.innerHTML = `
-    <div class="elements__delete">
+    <button class="elements__delete">
         <img
           src="./images/trash.svg"
           alt="Boton delete"
           class="elements__delete-img"
         />
-    </div>
+    </button>
 
     <img src="${data.link}" 
     alt="${data.name}" 
@@ -112,22 +112,29 @@ function renderCard(data, isNew = false) {
     
     <div class="elements__description">
       <p class="elements__description-title">${data.name}</p>
-      <div class="elements__description-like">
+      <button class="elements__description-like">
         <img
           src="./images/like_off.svg"
           alt="Boton like"
           class="elements__description-like"
         />
-      </div>
+      </button>
     </div>
   `;
+
+/*  const likeButtonElement=cardElement.querySelector('.elements__description-like');
+  likeButtonElement.addEventListener("click", function () {
+    likeButtonElement.classList.add("active");
+   
+  });*/
+
+  cardElement.querySelector('.elements__description-like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle("active");
+  });
 
   const deleteButton = cardElement.querySelector('.elements__delete');
   deleteButton.addEventListener('click', function () {
     cardElement.remove();
-
-
-  
   });
 
   if (isNew) {

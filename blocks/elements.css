@@ -45,25 +45,22 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #00000000;
+  border-style: none;
   box-sizing: border-box;
   margin: 1px;
 }
 
-.elements__description-liked {
-  background-image: url("./images/like_on.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-sizing: border-box;
-  margin: 4px;
-  opacity: 100%;
-  transition: 0.3s;
+.elements__description-like.active {
+  background-image: url("../images/like_on.svg");
 }
 .elements__delete{
-  width: 245px;
+  width: 260px;
   display: flex;
   position: absolute;
   justify-content: flex-end;
+  background-color: #00000000;
+  border-style: none;
   padding: 1%;
 }
 .elements__delete-img:hover{
