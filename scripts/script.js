@@ -10,9 +10,8 @@ const closeProfilePopupButton = popupProfile.querySelector(".popup__close");
 const popupSaveButton = formProfile.querySelector(".popup__submit-btn");
 
 profileEditButton.addEventListener("click", function () {
+  clearProfileForm();
   popupProfile.classList.add("active");
-  inputNameNode.value = profileNameNode.textContent;
-  inputAboutNode.value = profileAboutNode.textContent;
 });
 
 formProfile.addEventListener("submit", function (event) {
@@ -23,10 +22,17 @@ formProfile.addEventListener("submit", function (event) {
     popupProfile.classList.remove("active");
   }
 });
-
 closeProfilePopupButton.addEventListener("click", function () {
   popupProfile.classList.remove("active");
+  clearProfileForm(); // Opcional: Limpia el formulario al cerrar el popup
 });
+
+// Función para limpiar los campos del formulario
+function clearProfileForm() {
+  inputNameNode.value = "";  // Esto asegura que el placeholder se muestre
+  inputAboutNode.value = ""; // Esto asegura que el placeholder se muestre
+}
+
 
 const initialCards = [
   {
@@ -80,13 +86,12 @@ saveAddButton.addEventListener("click", function (event) {
 });
 
 function addImage(name, link) {
-  initialCards.push({ name, link });
-  renderCard({ name, link });
+  initialCards.unshift({ name, link });
+  renderCard({ name, link },true);
 }
-
-function renderCard(data) {
-  const cardElement = document.createElement("div");
-  cardElement.classList.add("elements__item");
+function renderCard(data, isNew = false) {
+  const cardElement = document.createElement('div');
+  cardElement.classList.add('elements__item');
 
   cardElement.innerHTML = `
     <div class="elements__delete">
@@ -113,7 +118,11 @@ function renderCard(data) {
     </div>
   `;
 
-  cardsContainer.append(cardElement);
+  if (isNew) {
+    cardsContainer.prepend(cardElement); 
+  } else {
+    cardsContainer.append(cardElement); 
+  }
 }
 
 closeAddButton.addEventListener("click", function () {
