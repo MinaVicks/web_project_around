@@ -59,19 +59,20 @@
   opacity: 100%;
   transition: 0.3s;
 }
-
-
 .elements__delete{
   width: 245px;
   display: flex;
   position: absolute;
   justify-content: flex-end;
   padding: 1%;
-
 }
-
+.elements__delete-img:hover{
+ opacity:60%;
+ width:15%;
+}
 .elements__delete-img{
-  opacity: 50%;
+  opacity: 100%;
+  width:10%;
 
 }
 

@@ -67,6 +67,8 @@ const popupAddImage = document.querySelector(".popup__add");
 const closeAddButton = popupAddImage.querySelector(".popup__close");
 const saveAddButton = popupAddImage.querySelector(".popup__button_add");
 
+
+
 profileAddButton.addEventListener("click", function () {
   popupAddImage.classList.add("active");
 });
@@ -88,7 +90,9 @@ saveAddButton.addEventListener("click", function (event) {
 function addImage(name, link) {
   initialCards.unshift({ name, link });
   renderCard({ name, link },true);
+
 }
+
 function renderCard(data, isNew = false) {
   const cardElement = document.createElement('div');
   cardElement.classList.add('elements__item');
@@ -117,6 +121,14 @@ function renderCard(data, isNew = false) {
       </div>
     </div>
   `;
+
+  const deleteButton = cardElement.querySelector('.elements__delete');
+  deleteButton.addEventListener('click', function () {
+    cardElement.remove();
+
+
+  
+  });
 
   if (isNew) {
     cardsContainer.prepend(cardElement); 
