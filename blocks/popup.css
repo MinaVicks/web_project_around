@@ -128,3 +128,47 @@
   pointer-events: all;
   scale: 1;
 }
+
+.popup__imageFull {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.popup__imageFull.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__imageFull-content {
+  width: 470px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 18% auto;
+  z-index: 2000;
+  
+}
+
+.popup__imageFull-image {
+  width: 75vw;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  height: auto;
+  border-radius: 10px;
+ 
+}

@@ -96,7 +96,7 @@ function addImage(name, link) {
 function renderCard(data, isNew = false) {
   const cardElement = document.createElement('div');
   cardElement.classList.add('elements__item');
-
+  
   cardElement.innerHTML = `
     <button class="elements__delete">
         <img
@@ -122,11 +122,18 @@ function renderCard(data, isNew = false) {
     </div>
   `;
 
-/*  const likeButtonElement=cardElement.querySelector('.elements__description-like');
-  likeButtonElement.addEventListener("click", function () {
-    likeButtonElement.classList.add("active");
-   
-  });*/
+  const imageFullButton = cardElement.querySelector('.elements__image');
+  imageFullButton.addEventListener('click', function () {
+    const popupImageFull = document.querySelector(".popup__imageFull");
+    const popupImage = popupImageFull.querySelector('.popup__imageFull-image');
+    const popupImageTitle= popupImageFull.querySelector(".popup_titleFull");
+    popupImage.src = data.link;
+    popupImageTitle.textContent=data.name;
+    popupImageFull.classList.add('active');
+  });
+
+  
+  
 
   cardElement.querySelector('.elements__description-like').addEventListener('click', function (evt) {
     evt.target.classList.toggle("active");
