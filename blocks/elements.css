@@ -20,10 +20,14 @@
 }
 
 .elements__image {
+  cursor:pointer;
   width: 100%;
   height: 70%;
   object-fit: fill;
   border-radius:10px 10px 0px  0px;
+}
+.elements__image:hover{
+  opacity: 80%;
 }
 
 .elements__description {
@@ -55,7 +59,7 @@
   background-image: url("../images/like_on.svg");
 }
 .elements__delete{
-  width: 260px;
+  width: 280px;
   display: flex;
   position: absolute;
   justify-content: flex-end;
@@ -65,11 +69,11 @@
 }
 .elements__delete-img:hover{
  opacity:60%;
- width:15%;
+ width:10%;
 }
 .elements__delete-img{
   opacity: 100%;
-  width:10%;
+  width:8%;
 
 }
 
