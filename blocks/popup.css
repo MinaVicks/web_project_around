@@ -70,7 +70,7 @@
   width: 80%;
   font-size: 14px;
   font-weight: normal;
-  color: #c4c4c4;
+  color: #fff;
   border-style: solid;
   border-width: 1px;
   border-color: #c4c4c4;
@@ -87,7 +87,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: #c4c4c4;
-  background-color: #fff;
+  background-color: #000;
   padding: 5% 0px;
 }
 .popup__submit-btn:hover {
