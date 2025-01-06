@@ -1,19 +1,21 @@
 function hideInputError(formElement, inputElement, settings) {
   console.log("no hay error");
-  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  const errorElement = document.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.remove(settings.inputErrorClass);
   errorElement.textContent = "";
   errorElement.classList.remove(settings.errorClass);
 }
 function showInputError(formElement, inputElement, settings) {
-  console.log("si hay error");
+  //console.log(inputElement);
+
   const errorMessage = inputElement.validationMessage;
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
 
   inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.errorClass);
+  console.log(errorMessage);
 }
 
 function checkInputValidity(formElement, inputElement, settings) {
