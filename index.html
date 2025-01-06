@@ -66,20 +66,27 @@
 
         <div class="popup__card">
           <h3 class="popup__title">New Place</h3>
-          <form class="popup__input">
+          <form class="popup__input popup__form">
             <input
               type="text"
               placeholder="Title"
-              class="popup__input_title popup__text"
-            />
+              class="popup__text popup__input_title"
+              requireda
+              minlength="2"
+              maxlength="30"
+              id="input-place"
+            /><span id="input-place-error" class="popup__error"></span>
 
             <input
-              type="text"
+              type="url"
               placeholder="Image URL"
-              class="popup__input_url popup__text"
-            />
+              class="popup__text popup__input_url"
+              id="input-url"
+            /><span id="input-url-error" class="popup__error"></span>
 
-            <button class="popup__button_add" type="submit">Añadir</button>
+            <button class="popup__button_add popup__submit-btn" type="submit">
+              Añadir
+            </button>
           </form>
         </div>
       </div>

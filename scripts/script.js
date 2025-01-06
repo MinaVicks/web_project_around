@@ -130,6 +130,7 @@ function renderCard(data, isNew = false) {
   });
 
   const closeFullButton = popupImageFull.querySelector(".popup__close");
+
   closeFullButton.addEventListener("click", function () {
     popupImageFull.classList.remove("active");
   });
@@ -167,3 +168,13 @@ document.addEventListener("click", (event) => {
 });
 
 renderInitialCards();
+
+function handleEscKey(event) {
+  if (event.key === "Escape") {
+    console.log("esc");
+    popupProfile.classList.remove("active");
+    popupAddImage.classList.remove("active");
+  }
+}
+
+document.addEventListener("keydown", handleEscKey);

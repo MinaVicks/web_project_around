@@ -9,6 +9,7 @@
   opacity: 0;
   scale: 0;
   z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .popup.active {
   opacity: 1;
@@ -194,7 +195,7 @@
 .popup__error {
   font-size: 12px;
   color: red;
-  margin: 10px 45px;
+  margin: 5px 45px;
   display: none;
 }
 .popup__error_visible {

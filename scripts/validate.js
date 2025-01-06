@@ -70,7 +70,6 @@ function enableValidation(settings) {
     setEventListeners(formElement, settings);
   });
 }
-
 enableValidation({
   formSelector: ".popup__form",
   inputSelector: ".popup__text",
