@@ -25,20 +25,30 @@
         <div class="popup__card">
           <h3 class="popup__title">Editar perfil</h3>
 
-          <form class="popup__input">
+          <form class="popup__input popup__form">
             <input
               type="text"
               placeholder="Nombre"
+              required
+              minlength="2"
+              maxlength="40"
               class="popup__text popup__text_title"
+              id="input-name"
             />
+            <span id="input-name-error" class="popup__error"></span>
 
             <input
               type="text"
               placeholder="Acerca de mí"
+              required
+              minlength="2"
+              maxlength="200"
               class="popup__text popup__text_about"
+              id="input-description"
             />
+            <span id="input-description-error" class="popup__error"></span>
 
-            <button class="popup__submit-btn">Guardar</button>
+            <button class="popup__submit-btn" type="submit">Guardar</button>
           </form>
         </div>
       </div>
@@ -69,7 +79,7 @@
               class="popup__input_url popup__text"
             />
 
-            <button class="popup__button_add">Añadir</button>
+            <button class="popup__button_add" type="submit">Añadir</button>
           </form>
         </div>
       </div>
@@ -138,6 +148,6 @@
         <p class="footer__copyright">&#169; 2021 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/script.js" type="module"></script>
   </body>
 </html>

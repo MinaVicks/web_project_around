@@ -1,3 +1,5 @@
+import "./validate.js";
+
 const popupProfile = document.querySelector(".popup");
 const profileEditButton = document.querySelector(".profile__info-edit");
 const profileNameNode = document.querySelector(".profile__info-name");
@@ -157,5 +159,11 @@ closeAddButton.addEventListener("click", function () {
 function renderInitialCards() {
   initialCards.forEach(renderCard);
 }
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("popup")) {
+    popupProfile.classList.remove("active");
+    popupAddImage.classList.remove("active");
+  }
+});
 
 renderInitialCards();
