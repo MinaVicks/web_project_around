@@ -44,6 +44,7 @@
   background-color: rgb(255, 255, 255);
   width: 430px;
   min-height: 330px;
+  padding: 5px;
   border-radius: 10px;
   font-family: "Inter", sans-serif;
   display: flex;
@@ -129,6 +130,7 @@
   opacity: 0;
   scale: 0;
   z-index: 200;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .popup__add.active {
   opacity: 1;

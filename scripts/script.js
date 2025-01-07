@@ -91,6 +91,7 @@ function addImage(name, link) {
   renderCard({ name, link }, true);
 }
 
+const popupImageFull = document.querySelector(".popup__imageFull");
 function renderCard(data, isNew = false) {
   const cardElement = document.createElement("div");
   cardElement.classList.add("elements__item");
@@ -123,6 +124,7 @@ function renderCard(data, isNew = false) {
   const popupImage = popupImageFull.querySelector(".popup__imageFull-image");
   const popupImageTitle = popupImageFull.querySelector(".popup_titleFull");
   const imageFullButton = cardElement.querySelector(".elements__image");
+
   imageFullButton.addEventListener("click", function () {
     popupImage.src = data.link;
     popupImageTitle.textContent = data.name;
@@ -164,6 +166,7 @@ document.addEventListener("click", (event) => {
   if (event.target.classList.contains("popup")) {
     popupProfile.classList.remove("active");
     popupAddImage.classList.remove("active");
+    popupImageFull.classList.remove("active");
   }
 });
 
@@ -174,6 +177,7 @@ function handleEscKey(event) {
     console.log("esc");
     popupProfile.classList.remove("active");
     popupAddImage.classList.remove("active");
+    popupImageFull.classList.remove("active");
   }
 }
 
