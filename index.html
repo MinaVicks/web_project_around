@@ -71,7 +71,7 @@
               type="text"
               placeholder="Title"
               class="popup__text popup__input_title"
-              requireda
+              required
               minlength="2"
               maxlength="30"
               id="input-place"
@@ -149,12 +149,27 @@
         </button>
       </section>
       <main class="elements">
-        <div class="elements__container"></div>
+        <div class="elements__container">
+          <template id="card-template">
+            <div class="elements__item">
+              <img src="" alt="" class="elements__image" />
+              <button class="elements__delete">
+                <img src="./images/trash.svg" alt="Eliminar tarjeta" />
+              </button>
+              <div class="elements__description">
+                <h2 class="elements__description-title"></h2>
+                <button class="elements__description-like">
+                  <img src="./images/Like_off.svg" alt="Like" />
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2021 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./scripts/script.js" type="module"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
