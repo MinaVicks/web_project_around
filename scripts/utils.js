@@ -1,9 +1,10 @@
 export function openPopup(popup) {
-  popup.classList.add("popup_opened");
+  console.log("openPopup works"); // Debugging
+  popup.classList.add("active");
 }
 
 export function closePopup(popup) {
-  popup.classList.remove("popup_opened");
+  popup.classList.remove("active");
 }
 
 export function closePopupOnEsc(event) {

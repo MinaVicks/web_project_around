@@ -84,6 +84,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", closePopupOnEsc);
 
 openEditProfileButton.addEventListener("click", () => {
+  console.log("Edit Profile Button Clicked"); // Debugging
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openPopup(editProfilePopup);
@@ -100,7 +101,9 @@ editProfileForm.addEventListener("submit", (event) => {
 });
 
 openAddCardButton.addEventListener("click", () => {
+  console.log("Add Card Button Clicked"); // Debugging
   addCardForm.reset();
+
   formValidators[addCardForm.name]._toggleButtonState();
   openPopup(addCardPopup);
 });
