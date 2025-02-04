@@ -84,7 +84,6 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", closePopupOnEsc);
 
 openEditProfileButton.addEventListener("click", () => {
-  console.log("Edit Profile Button Clicked"); // Debugging
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openPopup(editProfilePopup);
@@ -101,7 +100,6 @@ editProfileForm.addEventListener("submit", (event) => {
 });
 
 openAddCardButton.addEventListener("click", () => {
-  console.log("Add Card Button Clicked"); // Debugging
   addCardForm.reset();
 
   formValidators[addCardForm.name]._toggleButtonState();
@@ -109,12 +107,12 @@ openAddCardButton.addEventListener("click", () => {
 });
 
 addCardForm.addEventListener("submit", (event) => {
+  console.log("add card funciona");
   event.preventDefault();
 
   if (!formValidators[addCardForm.name]._hasInvalidInput()) {
     const newCard = new Card(
-      inputTitle.value,
-      inputUrl.value,
+      { name: inputTitle.value, link: inputUrl.value },
       ".card-template"
     );
     cardContainer.prepend(newCard.generateCard());
