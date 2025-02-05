@@ -34,7 +34,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 10% 5%;
+  margin: auto 5%;
 }
 
 .elements__description-title {
@@ -42,20 +42,25 @@
   font-weight: 900;
   text-align: left;
   color: black;
+  max-width: 80%;
 }
 
 .elements__description-like {
+  background-image: url("../images/like_off.svg");
+  width: 21px;
+  height: 19px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+
   background-color: #00000000;
   border-style: none;
   box-sizing: border-box;
-  margin: 1px;
 }
 
 .elements__description-like.active {
   background-image: url("../images/like_on.svg");
+  width: 21px;
+  height: 19px;
 }
 .elements__delete {
   width: 280px;
@@ -73,10 +78,6 @@
 .elements__delete-img {
   opacity: 100%;
   width: 8%;
-}
-
-.elements__description-like:hover {
-  opacity: 50%;
 }
 
 @media screen and (max-width: 768px) {
