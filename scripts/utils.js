@@ -1,5 +1,4 @@
 export function openPopup(popup) {
-  console.log("openPopup works"); // Debugging
   popup.classList.add("active");
 }
 

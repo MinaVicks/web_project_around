@@ -9,9 +9,9 @@ const inputTitle = addCardForm.querySelector("#input-place");
 const inputUrl = addCardForm.querySelector("#input-url");
 
 const editProfilePopup = document.querySelector(".popup");
-const editProfileForm = editProfilePopup.querySelector(".popup__form");
-const inputName = editProfileForm.querySelector("#input-name");
-const inputDescription = editProfileForm.querySelector("#input-description");
+const editProfileForm = editProfilePopup.querySelector(".popup__input");
+const inputName = editProfileForm.querySelector(".popup__text_title");
+const inputDescription = editProfileForm.querySelector(".popup__text_about");
 const profileName = document.querySelector(".profile__info-name");
 const profileDescription = document.querySelector(".profile__info-subtitle");
 
@@ -84,14 +84,17 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", closePopupOnEsc);
 
 openEditProfileButton.addEventListener("click", () => {
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileDescription.textContent;
+  clearProfileForm();
   openPopup(editProfilePopup);
 });
 
+function clearProfileForm() {
+  inputName.value = "";
+  inputDescription.value = "";
+}
+
 editProfileForm.addEventListener("submit", (event) => {
   event.preventDefault();
-
   if (!formValidators[editProfileForm.name]._hasInvalidInput()) {
     profileName.textContent = inputName.value;
     profileDescription.textContent = inputDescription.value;
@@ -107,9 +110,7 @@ openAddCardButton.addEventListener("click", () => {
 });
 
 addCardForm.addEventListener("submit", (event) => {
-  console.log("add card funciona");
   event.preventDefault();
-
   if (!formValidators[addCardForm.name]._hasInvalidInput()) {
     const newCard = new Card(
       { name: inputTitle.value, link: inputUrl.value },
