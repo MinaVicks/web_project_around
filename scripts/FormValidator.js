@@ -1,6 +1,7 @@
 export default class FormValidator {
   constructor(settings, formElement) {
     this._settings = settings;
+
     this._formElement = formElement;
     this._inputList = Array.from(
       formElement.querySelectorAll(settings.inputSelector)
@@ -8,6 +9,7 @@ export default class FormValidator {
     this._submitButton = formElement.querySelector(
       settings.submitButtonSelector
     );
+    // this.resetValidation();
   }
 
   _hideInputError(inputElement) {
@@ -65,8 +67,11 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (evt) => evt.preventDefault());
     this._setEventListeners();
   }
-}
 
+  resetValidation() {
+    //this._formElement.reset;
+  }
+}
 const validationSettings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__text",
