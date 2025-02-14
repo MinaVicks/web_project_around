@@ -34,6 +34,7 @@
               maxlength="40"
               class="popup__text popup__text_title"
               id="input-name"
+              name="name"
             />
             <span id="input-name-error" class="popup__error"></span>
 
@@ -45,10 +46,13 @@
               maxlength="200"
               class="popup__text popup__text_about"
               id="input-description"
+              name="description"
             />
             <span id="input-description-error" class="popup__error"></span>
 
-            <button class="popup__submit-btn" type="submit">Guardar</button>
+            <button class="popup__submit-btn" type="submit" id="submitted">
+              Guardar
+            </button>
           </form>
         </div>
       </div>
@@ -75,6 +79,7 @@
               minlength="2"
               maxlength="30"
               id="input-place"
+              name="title"
             /><span id="input-place-error" class="popup__error"></span>
 
             <input
@@ -82,6 +87,7 @@
               placeholder="Image URL"
               class="popup__text popup__input_url"
               id="input-url"
+              name="link"
             /><span id="input-url-error" class="popup__error"></span>
 
             <button class="popup__button_add popup__submit-btn" type="submit">
@@ -102,11 +108,7 @@
           />
         </button>
         <div class="popup__imageFull-content">
-          <img
-            src=""
-            alt="Imagen en pantalla completa"
-            class="popup__imageFull-image"
-          />
+          <img src="" alt="" class="popup__imageFull-image" />
           <h3 class="popup_titleFull"></h3>
         </div>
       </div>
@@ -140,7 +142,7 @@
           </div>
           <h2 class="profile__info-subtitle">Explorador</h2>
         </div>
-        <button class="profile__add">
+        <button class="profile__add" id="open-popupAdd">
           <img
             src="./images/Add.svg"
             alt="Boton para añadir nuevo"
