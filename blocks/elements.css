@@ -26,7 +26,7 @@
   border-radius: 10px 10px 0px 0px;
 }
 .elements__image:hover {
-  opacity: 80%;
+  opacity: 90%;
 }
 
 .elements__description {
@@ -70,11 +70,16 @@
   background-color: #00000000;
   border-style: none;
   padding: 1%;
+  z-index: 1;
+}
+
+/*.elements__delete.active {
+  display: block;
 }
 .elements__delete-img:hover {
   opacity: 60%;
   width: 10%;
-}
+}*/
 .elements__delete-img {
   opacity: 100%;
   width: 8%;

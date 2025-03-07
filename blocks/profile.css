@@ -7,9 +7,46 @@
   width: 100%;
   border-color: aliceblue;
 }
+
+.profile__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    .profile__avatar-opacity {
+      display: block;
+    }
+    .profile__avatar-edit {
+      display: block;
+    }
+  }
+}
+.profile__avatar-edit {
+  position: fixed;
+  display: none;
+  z-index: 1000;
+}
+.profile__avatar-opacity {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 900;
+}
+
 .profile__avatar {
   width: 120px;
   height: 120px;
+  z-index: 600;
 }
 .profile__info {
   margin: 0;

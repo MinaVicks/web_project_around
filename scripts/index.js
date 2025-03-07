@@ -4,34 +4,17 @@ import Section from "./Section.js";
 import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
+import PopupWithConfirmation from "./PopupWithConfirmation.js";
 import UserInfo from "./UserInfo.js";
+import Api from "./Api.js";
 
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "baa82528-b162-4561-afed-0ee517d16cde",
+    "Content-Type": "application/json",
   },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+});
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__info-name",
@@ -45,31 +28,81 @@ function handleImageClick(name, link) {
   imagePopup.open(link, name, name);
 }
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: renderCard,
-  },
-  ".elements__container"
-);
+function handleCardLike(cardId) {
+  return api.likeCard(cardId);
+}
+
+function handleDeleteCardLike(cardId) {
+  return api.deleteLikeCard(cardId);
+}
+
+let userId;
+
+api
+  .getUserInformation()
+  .then((userData) => {
+    userId = userData._id;
+  })
+  .catch((err) => {
+    console.error("Error fetching user information:", err);
+  });
+
+const deleteCardPopup = new PopupWithConfirmation("#delete-popup", (cardId) => {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
+
+      if (cardElement) {
+        cardElement.remove();
+      }
+    })
+    .catch((err) => {
+      console.log(err); // registra el error en la consola
+    });
+});
+
+deleteCardPopup.setEventListeners();
+
+let cardSection;
+
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    console.log("Initial Cards:", initialCards);
+    cardSection = new Section(
+      {
+        items: initialCards,
+        renderer: renderCard,
+      },
+      ".elements__container"
+    );
+    cardSection.renderItems();
+  })
+  .catch((err) => {
+    console.log(err); // registra el error en la consola
+  });
 
 function renderCard(cardData) {
-  const card = new Card(cardData, ".card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    ".card-template",
+    handleImageClick,
+    handleCardLike,
+    handleDeleteCardLike,
+    deleteCardPopup.open,
+    userId
+  );
   const cardElement = card.generateCard();
-  cardSection.addItem(cardElement);
+  cardElement.setAttribute("data-card-id", cardData._id);
+  //cardSection.addItem(cardElement);
+  return cardElement;
 }
 
-cardSection.renderItems();
-
-function handleProfileFormSubmit(inputValues) {
-  userInfo.setUserInfo({
-    name: inputValues.name,
-    description: inputValues.description,
-  });
-  editProfilePopup.close();
-}
-
-const editProfilePopup = new PopupWithForm(".popup", handleProfileFormSubmit);
+const editProfilePopup = new PopupWithForm(
+  ".popup__profile",
+  handleProfileFormSubmit
+);
 editProfilePopup.setEventListeners();
 
 const validationSettings = {
@@ -89,13 +122,31 @@ document.querySelectorAll(validationSettings.formSelector).forEach((form) => {
   formValidators[form.name] = validator;
 });
 
+function handleProfileFormSubmit(inputValues) {
+  userInfo.setUserInfo({
+    name: inputValues.name,
+    description: inputValues.description,
+  });
+  editProfilePopup.close();
+}
 document.querySelector("#open-popup").addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
-
   editProfilePopup.open();
   document.querySelector("#input-name").value = currentUserInfo.name;
   document.querySelector("#input-description").value =
     currentUserInfo.description;
+
+  api
+    .updateUserInformation({
+      name: currentUserInfo.name,
+      about: currentUserInfo.description,
+    })
+    .then((response) => {
+      userInfo.setUserInfo(response.name, response.about);
+    })
+    .catch((err) => {
+      console.log(err); // registra el error en la consola
+    });
 });
 
 document.querySelector("#open-popupAdd").addEventListener("click", () => {
@@ -107,10 +158,26 @@ function handleAddCardFormSubmit(inputValues) {
     name: inputValues.title,
     link: inputValues.link,
   };
-  const card = new Card(newCard, ".card-template", handleImageClick);
-  const cardElement = card.generateCard();
-  cardSection.addItem(cardElement);
-  addCardPopup.close();
+  api
+    .createCard(newCard)
+    .then((response) => {
+      const card = new Card(
+        newCard,
+        ".card-template",
+        handleImageClick,
+        handleCardLike,
+        handleDeleteCardLike,
+        deleteCardPopup.open,
+        userId
+      );
+      const cardElement = card.generateCard();
+      cardSection.addItem(cardElement);
+      addCardPopup.close();
+    })
+
+    .catch((err) => {
+      console.log(err); // registra el error en la consola
+    });
 }
 
 const addCardPopup = new PopupWithForm(".popup__add", handleAddCardFormSubmit);

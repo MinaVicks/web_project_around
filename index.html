@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <div class="popup">
+
+
+    <div class="popup popup__profile">
       <div class="popup__container">
         <button class="popup__close">
           <img
@@ -97,6 +99,30 @@
         </div>
       </div>
     </div>
+    
+    <div class="popup popup__delete" id="delete-popup">
+      <div class="popup__container">
+        <button class="popup__close">
+          <img
+            src="./images/Close_off.svg"
+            alt="close button"
+            class="popup__close"
+          />
+        </button>
+
+        <div class="popup__card">
+          <h3 class="popup__title">¿Estás seguro?</h3>
+          <form class="popup__delete_form">
+            <button
+              class="popup__confirm-button popup__submit-btn"
+              type="submit"
+            >
+              Sí
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <div class="popup__imageFull popup" id="popup__imageFull">
       <div class="popup__imageFull-container">
@@ -126,7 +152,14 @@
         <hr class="header__line" />
       </header>
       <section class="profile">
-        <div class="profile__avatar">
+        <div class="profile__container">
+          <img
+            src="./images/edit_avatar.svg"
+            alt="Edit pencil"
+            class="profile__avatar-edit"
+          />
+          <div class="profile__avatar-opacity"></div>
+
           <img
             src="./images/Avatar.png"
             alt="Profile picture"
