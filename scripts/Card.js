@@ -40,8 +40,12 @@ export default class Card {
       this._element
         .querySelector(".elements__delete")
         .addEventListener("click", () => {
-          console.log("delete click");
-          this._handleDeleteCard(this._cardId);
+          console.log(
+            "1.-dentro de Set Event Listener Card.js  " + this._handleDeleteCard
+          );
+          console.log(" 2.- " + this._cardId);
+          this._handleDeleteCard();
+          //this._handleDeleteCard(this._cardId);
           // this._removeCard();
         });
     } else {

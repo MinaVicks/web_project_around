@@ -8,7 +8,7 @@ export default class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
   }
   open() {
-    console.log(this._popup);
+    console.log("4.- " + this._popup);
     if (this._popup) {
       this._popup.classList.add("active");
     } else {

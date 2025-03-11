@@ -84,6 +84,7 @@ api
   });
 
 function renderCard(cardData) {
+  console.log("5._ " + deleteCardPopup.open);
   const card = new Card(
     cardData,
     ".card-template",
