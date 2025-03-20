@@ -5,15 +5,15 @@ export default class Card {
     handleImageClick,
     handleCardLike,
     handleDeleteCardLike,
-    handleDeleteCard,
-    userId
+    handleDeleteCard
+    //userId
   ) {
     this._name = data.name;
     this._link = data.link;
     this._isLiked = data._isLiked || false;
     this._cardId = data._id;
-    this._ownerId = data.owner;
-    this._userId = userId;
+    //this._ownerId = data.owner;
+    //this._userId = userId;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleCardLike = handleCardLike;
@@ -36,22 +36,15 @@ export default class Card {
         this._toggleLike();
       });
     //delete
-    if (this._ownerId === this._userId) {
-      this._element
-        .querySelector(".elements__delete")
-        .addEventListener("click", () => {
-          console.log(
-            "1.-dentro de Set Event Listener Card.js  " + this._handleDeleteCard
-          );
-          console.log(" 2.- " + this._cardId);
-          this._handleDeleteCard();
-          //this._handleDeleteCard(this._cardId);
-          // this._removeCard();
-        });
-    } else {
-      this._element.querySelector(".elements__delete").remove();
-    }
-
+    this._element
+      .querySelector(".elements__delete")
+      .addEventListener("click", () => {
+        console.log(" Entra delete card ");
+        // this._handleDeleteCard();
+        this._handleDeleteCard(this._cardId);
+        //this._removeCard();
+      });
+    //popupFULL
     this._element
       .querySelector(".elements__image")
       .addEventListener("click", () => {
