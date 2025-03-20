@@ -35,15 +35,16 @@ export default class Card {
       .addEventListener("click", () => {
         this._toggleLike();
       });
+
     //delete
     this._element
       .querySelector(".elements__delete")
       .addEventListener("click", () => {
-        console.log(" Entra delete card ");
         // this._handleDeleteCard();
         this._handleDeleteCard(this._cardId);
         //this._removeCard();
       });
+
     //popupFULL
     this._element
       .querySelector(".elements__image")
@@ -68,9 +69,9 @@ export default class Card {
     this._isLiked = !this._isLiked;
   }
 
-  _removeCard() {
+  /* _removeCard() {
     this._element.remove();
-  }
+  }*/
 
   generateCard() {
     this._element = this._getTemplate();

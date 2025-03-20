@@ -1,51 +1,27 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector) {
-    super(popupSelector);
-  }
-  open() {
-    super.open();
-  }
-  /*
   constructor(popupSelector, handleConfirm) {
-    console.log("Confirmation  " + popupSelector);
     super(popupSelector);
     this._handleConfirm = handleConfirm;
-    //this._form = this._popup.querySelector(".popup__delete_form");
     this._confirmButton = this._popup.querySelector(".popup__confirm-button");
   }
-
-  open() {
-    //console.log("3._ " + cardId);
-    // this._cardId = cardId;
+  open(cardId) {
     super.open();
+    this._cardId = cardId;
+    console.log("Esta tarjeta es" + cardId);
+  }
+  close() {
+    super.close();
+
+    console.log("cierro delete");
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._confirmButton.addEventListener("click", () => {
       this._handleConfirm(this._cardId);
-      this.close();
+      // this.close();
     });
   }
-  /*
-  (cardId) => {
-  api
-    .deleteCard(cardId)
-    .then(() => {
-      const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
-
-      if (cardElement) {
-        cardElement.remove();
-      }
-    })
-    .catch((err) => {
-      console.log(err); // registra el error en la consola
-    });
-  
-  close() {
-
-    super.close();
-  }*/
 }

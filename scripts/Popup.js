@@ -1,14 +1,13 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    console.log("Popup element:", this._popup);
+
     if (!this._popup) {
       throw new Error(`Popup element not found: ${popupSelector}`);
     }
     this._handleEscClose = this._handleEscClose.bind(this);
   }
   open() {
-    console.log("4.- " + this._popup);
     if (this._popup) {
       this._popup.classList.add("active");
     } else {

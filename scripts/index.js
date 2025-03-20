@@ -24,8 +24,10 @@ const userInfo = new UserInfo({
 const imagePopup = new PopupWithImage(".popup__imageFull");
 imagePopup.setEventListeners();
 
-const deleteCardPopup = new PopupWithConfirmation(".popup__delete");
-deleteCardPopup.setEventListeners();
+const deleteCardPopup = new PopupWithConfirmation(
+  ".popup__delete",
+  handleConfirm
+);
 
 function handleImageClick(name, link) {
   imagePopup.open(link, name, name);
@@ -42,31 +44,20 @@ function handleDeleteCardLike(cardId) {
   return api.deleteLikeCard(cardId);
 }
 
-let userId;
-
-/*api
-  .getUserInformation()
-  .then((userData) => {
-    userId = userData._id;
-  })
-  .catch((err) => {
-    console.error("Error fetching user information:", err);
-  });
-
-const deleteCardPopup = new PopupWithConfirmation("#delete-popup", (cardId) => {
-  api
+function handleConfirm(cardId) {
+  return api
     .deleteCard(cardId)
     .then(() => {
       const cardElement = document.querySelector(`[data-card-id="${cardId}"]`);
-
-      if (cardElement) {
-        cardElement.remove();
-      }
+      cardElement.remove();
     })
     .catch((err) => {
-      console.log(err); // registra el error en la consola
+      console.error("Error deleting card:", err);
     });
-});*/
+}
+deleteCardPopup.setEventListeners();
+
+let userId;
 
 let cardSection;
 
@@ -99,7 +90,7 @@ function renderCard(cardData) {
   );
   const cardElement = card.generateCard();
   cardElement.setAttribute("data-card-id", cardData._id);
-  //cardSection.addItem(cardElement);
+
   return cardElement;
 }
 
