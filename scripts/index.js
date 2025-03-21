@@ -143,19 +143,34 @@ document.querySelectorAll(validationSettings.formSelector).forEach((form) => {
   validator.enableValidation();
   formValidators[form.name] = validator;
 });
-
 function handleProfileFormSubmit(inputValues) {
-  userInfo.setUserInfo({
-    name: inputValues.name,
-    description: inputValues.description,
-  });
-  editProfilePopup.close();
+  const submitButton = document.querySelector(".popup__submit-btn");
+  const originalButtonText = submitButton.textContent;
+
+  submitButton.textContent = "Guardando...";
+
+  api
+    .updateUserInformation({
+      name: inputValues.name,
+      about: inputValues.description,
+    })
+    .then((response) => {
+      userInfo.setUserInfo({
+        name: response.name,
+        description: response.about,
+      });
+
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.error("Error updating user information:", err);
+    })
+    .finally(() => {
+      submitButton.textContent = originalButtonText;
+    });
 }
 
-document.querySelector(".profile__container").addEventListener("click", () => {
-  editProfileAvatar.open();
-});
-
+//#open-popup
 document.querySelector("#open-popup").addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   editProfilePopup.open();
@@ -170,10 +185,16 @@ document.querySelector("#open-popup").addEventListener("click", () => {
     })
     .then((response) => {
       userInfo.setUserInfo(response.name, response.about);
+      userInfo.setSubmitButtonText(originalButtonText);
     })
+
     .catch((err) => {
       console.log(err); // registra el error en la consola
     });
+});
+
+document.querySelector(".profile__container").addEventListener("click", () => {
+  editProfileAvatar.open();
 });
 
 document.querySelector("#open-popupAdd").addEventListener("click", () => {

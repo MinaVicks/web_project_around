@@ -14,4 +14,11 @@ export default class UserInfo {
     this._userName.textContent = name;
     this._userDescription.textContent = description;
   }
+
+  setSubmitButtonText(text) {
+    const submitButton = document.querySelector(".popup__submit-btn");
+    if (submitButton) {
+      submitButton.textContent = text;
+    }
+  }
 }
