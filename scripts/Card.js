@@ -5,15 +5,15 @@ export default class Card {
     handleImageClick,
     handleCardLike,
     handleDeleteCardLike,
-    handleDeleteCard
-    //userId
+    handleDeleteCard,
+    userId
   ) {
     this._name = data.name;
     this._link = data.link;
     this._isLiked = data._isLiked || false;
     this._cardId = data._id;
-    //this._ownerId = data.owner;
-    //this._userId = userId;
+    this._ownerId = data.owner;
+    this._userId = userId;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleCardLike = handleCardLike;
@@ -37,13 +37,17 @@ export default class Card {
       });
 
     //delete
-    this._element
-      .querySelector(".elements__delete")
-      .addEventListener("click", () => {
-        // this._handleDeleteCard();
-        this._handleDeleteCard(this._cardId);
-        //this._removeCard();
-      });
+    if (this._ownerId === this._userId) {
+      this._element
+        .querySelector(".elements__delete")
+        .addEventListener("click", () => {
+          console.log("same user ");
+          this._handleDeleteCard(this._cardId);
+          //this._removeCard();
+        });
+    } else {
+      this._element.querySelector(".elements__delete").remove();
+    }
 
     //popupFULL
     this._element

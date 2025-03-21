@@ -12,8 +12,6 @@
   </head>
 
   <body>
-
-
     <div class="popup popup__profile">
       <div class="popup__container">
         <button class="popup__close">
@@ -99,7 +97,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="popup popup__delete" id="delete-popup">
       <div class="popup__container">
         <button class="popup__close">
@@ -118,6 +116,35 @@
               type="submit"
             >
               Sí
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup__avatar popup">
+      <div class="popup__container">
+        <button class="popup__close">
+          <img
+            src="./images/Close_off.svg"
+            alt="close button"
+            class="popup__close"
+          />
+        </button>
+
+        <div class="popup__card">
+          <h3 class="popup__title">Cambiar foto de perfil</h3>
+          <form class="popup__input popup__form">
+            <input
+              type="url"
+              placeholder="New Avatar URL"
+              class="popup__text popup__input_avatarUrl"
+              id="input-avatar"
+              name="avatar_link"
+            /><span id="input-url-error" class="popup__error"></span>
+
+            <button class="popup__button_add popup__submit-btn" type="submit">
+              Guardar
             </button>
           </form>
         </div>

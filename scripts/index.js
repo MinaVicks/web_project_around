@@ -59,6 +59,10 @@ deleteCardPopup.setEventListeners();
 
 let userId;
 
+api.getUserInformation().then((userData) => {
+  userId = userData._id;
+});
+
 let cardSection;
 
 api
@@ -85,12 +89,13 @@ function renderCard(cardData) {
     handleImageClick,
     handleCardLike,
     handleDeleteCardLike,
-    handleDeleteCard
-    //userId
+    handleDeleteCard,
+    userId
   );
   const cardElement = card.generateCard();
   cardElement.setAttribute("data-card-id", cardData._id);
 
+  //return cardSection.addItem(cardElement);
   return cardElement;
 }
 
@@ -99,6 +104,28 @@ const editProfilePopup = new PopupWithForm(
   handleProfileFormSubmit
 );
 editProfilePopup.setEventListeners();
+
+const editProfileAvatar = new PopupWithForm(
+  ".popup__avatar",
+  handleAvatarFormSubmit
+);
+editProfileAvatar.setEventListeners();
+
+function handleAvatarFormSubmit(inputValues) {
+  const avatarUrl = inputValues.avatar_link;
+
+  api
+    .updateAvatar(avatarUrl)
+    .then((response) => {
+      console.log("1. " + response);
+      const profileAvatar = document.querySelector(".profile__avatar");
+      profileAvatar.src = response.avatar;
+      editProfileAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err); // registra el error en la consola
+    });
+}
 
 const validationSettings = {
   formSelector: ".popup__form",
@@ -124,6 +151,11 @@ function handleProfileFormSubmit(inputValues) {
   });
   editProfilePopup.close();
 }
+
+document.querySelector(".profile__container").addEventListener("click", () => {
+  editProfileAvatar.open();
+});
+
 document.querySelector("#open-popup").addEventListener("click", () => {
   const currentUserInfo = userInfo.getUserInfo();
   editProfilePopup.open();
@@ -162,8 +194,8 @@ function handleAddCardFormSubmit(inputValues) {
         handleImageClick,
         handleCardLike,
         handleDeleteCardLike,
-        handleDeleteCard
-        //userId
+        handleDeleteCard,
+        userId
       );
       const cardElement = card.generateCard();
       cardSection.addItem(cardElement);

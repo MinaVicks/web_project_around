@@ -31,7 +31,7 @@
 .profile__avatar-edit {
   position: fixed;
   display: none;
-  z-index: 1000;
+  z-index: 10;
 }
 .profile__avatar-opacity {
   position: fixed;
@@ -40,13 +40,14 @@
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  z-index: 900;
+  z-index: 9;
 }
 
 .profile__avatar {
   width: 120px;
   height: 120px;
-  z-index: 600;
+  border-radius: 50%;
+  z-index: 6;
 }
 .profile__info {
   margin: 0;
