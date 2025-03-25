@@ -68,6 +68,7 @@ let cardSection;
 api
   .getInitialCards()
   .then((initialCards) => {
+    initialCards.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     console.log("Initial Cards:", initialCards);
     cardSection = new Section(
       {

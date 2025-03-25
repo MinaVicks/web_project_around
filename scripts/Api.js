@@ -10,7 +10,11 @@ export default class Api {
       headers: {
         ...this._headers,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   getInitialCards() {
@@ -19,8 +23,11 @@ export default class Api {
       headers: {
         ...this._headers,
       },
-    }).then((res) => res.json());
-    // ...
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
   updateUserInformation(body) {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -29,7 +36,11 @@ export default class Api {
         ...this._headers,
       },
       body: JSON.stringify(body),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   updateAvatar(avatarUrl) {
@@ -39,7 +50,11 @@ export default class Api {
         ...this._headers,
       },
       body: JSON.stringify({ avatar: avatarUrl }),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   createCard(body) {
@@ -49,7 +64,11 @@ export default class Api {
         ...this._headers,
       },
       body: JSON.stringify(body),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   likeCard(cardId) {
@@ -58,7 +77,11 @@ export default class Api {
       headers: {
         ...this._headers,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   deleteLikeCard(cardId) {
@@ -67,15 +90,24 @@ export default class Api {
       headers: {
         ...this._headers,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 
   deleteCard(cardId) {
+    console.log("Api " + cardId);
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         ...this._headers,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err); // registra el error en la consola
+      });
   }
 }

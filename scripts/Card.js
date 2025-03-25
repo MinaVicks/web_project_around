@@ -37,10 +37,13 @@ export default class Card {
       });
 
     //delete
+    /* console.log(this._ownerId);
+    console.log(this._userId);*/
     if (this._ownerId === this._userId) {
       this._element
         .querySelector(".elements__delete")
-        .addEventListener("click", () => {
+        .addEventListener("click", (evt) => {
+          evt.preventDefault();
           console.log("same user ");
           this._handleDeleteCard(this._cardId);
           //this._removeCard();
@@ -78,6 +81,7 @@ export default class Card {
   }*/
 
   generateCard() {
+    console.log(this._cardId);
     this._element = this._getTemplate();
     this._element.querySelector(".elements__image").src = this._link;
     this._element.querySelector(".elements__image").alt = this._name;
