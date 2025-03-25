@@ -43,10 +43,9 @@ export default class Card {
       this._element
         .querySelector(".elements__delete")
         .addEventListener("click", (evt) => {
-          evt.preventDefault();
-          console.log("same user ");
+          // evt.preventDefault();
+
           this._handleDeleteCard(this._cardId);
-          //this._removeCard();
         });
     } else {
       this._element.querySelector(".elements__delete").remove();
